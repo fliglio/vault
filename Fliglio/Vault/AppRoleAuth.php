@@ -14,7 +14,7 @@ class AppRoleAuth implements Auth {
 	public function login(Client $c) {
 		$data = $c->write("auth/approle/login", [
 			"role_id" => $this->roleId,
-			"secret_id" => $this->secret_id,
+			"secret_id" => $this->secretId,
 		]);
 
 		return $data['auth']['client_token'];
