@@ -21,6 +21,11 @@ Supports:
 
 ### Read and Write Secrets
 
+	$secrets = [
+		"foo" => "bar",
+		"baz" => "boo",
+	];
+
 	$c = new Client();
 
 	$resp = $c->write('secret/testing', $secrets);
@@ -30,6 +35,10 @@ Supports:
 	
 	$roleId = "...";
 	$secretId = "...";
+	$secrets = [
+		"foo" => "bar",
+		"baz" => "boo",
+	];
 
 	$c = new Client(new DefaultConfigFactory([
 		'auth' => new AppRole($roleId, $secretId),
