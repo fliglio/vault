@@ -1,24 +1,26 @@
 <?php
 namespace Fliglio\Vault;
 
+use Fliglio\Vault\Auth\Auth;
+
 class Config {
 
 	private $addr;
-	private $httpClient;
-	private $token;
+	private $http;
+	private $auth;
 
-	public function __construct($addr, $httpClient, $token=null) {
+	public function __construct($addr, $http, Auth $auth=null) {
 		$this->addr = $addr;
-		$this->httpClient = $httpClient;
-		$this->token = $token;
+		$this->http = $http;
+		$this->auth = $auth;
 	}
-	public function getAddress() {
+	public function getAddr() {
 		return $this->addr;
 	}
-	public function getHttpClient() {
-		return $this->httpClient;
+	public function getHttp() {
+		return $this->http;
 	}
-	public function getToken() {
-		return $this->token;
+	public function getAuth() {
+		return $this->auth;
 	}
 }
