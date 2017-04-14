@@ -7,13 +7,14 @@ php:
   - 5.6
 
 env:
-  - VAULT_TOKEN=horde VAULT_ADDR=http://localhost:8200
+    - PATH=/home/travis/bin:$PATH VAULT_TOKEN=horde VAULT_ADDR=http://localhost:8200
 
 before_script:
   - wget http://dl.fligl.io/vault.gz
   - gunzip vault.gz
   - chmod +x vault
-  - mv vault /usr/sbin/vault
+  - mkdir -p /home/travis/bin
+  - mv vault /home/travis/bin/vault
 
 script:
     - ./vendor/bin/phpunit -v -c phpunit.xml
