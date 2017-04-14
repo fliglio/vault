@@ -33,7 +33,7 @@ The default client will leverage the environment variables `VAULT_ADDR` and `VAU
 	$resp = $c->write('secret/testing', $secrets);
 	$found = $c->read('secret/testing');
 
-### Login with auth role
+### Login with AppRole
 	
 	$roleId = "...";
 	$secretId = "...";
