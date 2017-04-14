@@ -36,6 +36,7 @@ The default client will leverage the environment variables `VAULT_ADDR` and `VAU
 
 	print_r($found['data']);
 	
+	// Output:
 	// Array
 	// (
 	//     [baz] => boo
@@ -60,6 +61,7 @@ The default client will leverage the environment variables `VAULT_ADDR` and `VAU
 
 	print_r($found['data']);
 	
+	// Output:
 	// Array
 	// (
 	//     [baz] => boo
