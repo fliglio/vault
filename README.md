@@ -34,6 +34,13 @@ The default client will leverage the environment variables `VAULT_ADDR` and `VAU
 	$resp = $c->write('secret/testing', $secrets);
 	$found = $c->read('secret/testing');
 
+	print_r($found['data']);
+	// Array                                                                                                              │2017/04/14 10:51:31.039926 [ERROR] sys: enable auth mount failed: path=approle/ error=path is already in use
+	// (                                                                                                                      │^C==> Vault shutdown triggered
+	//     [baz] => boo                                                                                                       │2017/04/14 10:51:34.670329 [INFO ] core: pre-seal teardown starting
+	//     [foo] => bar                                                                                                       │2017/04/14 10:51:34.670344 [INFO ] core: cluster listeners not running
+	// )
+
 ### Login with AppRole
 	
 	$roleId = "...";
@@ -49,3 +56,11 @@ The default client will leverage the environment variables `VAULT_ADDR` and `VAU
 
 	$resp = $c->write('secret/testing', $secrets);
 	$found = $c->read('secret/testing');
+
+	print_r($found['data']);
+	// Array                                                                                                              │2017/04/14 10:51:31.039926 [ERROR] sys: enable auth mount failed: path=approle/ error=path is already in use
+	// (                                                                                                                      │^C==> Vault shutdown triggered
+	//     [baz] => boo                                                                                                       │2017/04/14 10:51:34.670329 [INFO ] core: pre-seal teardown starting
+	//     [foo] => bar                                                                                                       │2017/04/14 10:51:34.670344 [INFO ] core: cluster listeners not running
+	// )
+

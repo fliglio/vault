@@ -43,7 +43,6 @@ class VaultTest extends \PHPUnit_Framework_TestCase {
 
 		$resp = $c->write('secret/testing', $secrets);
 		$found = $c->read('secret/testing');
-		
 		// then
 		$this->assertEquals($secrets, $found['data'], "read secrets should match written secrets");
 	}
