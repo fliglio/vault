@@ -17,5 +17,5 @@ before_script:
   - mv vault /home/travis/bin/vault
 
 script:
-    - ./vendor/bin/phpunit -v -c phpunit.xml
+    - make test
 
