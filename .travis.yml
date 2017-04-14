@@ -17,6 +17,5 @@ before_script:
   - mv vault /home/travis/bin/vault
 
 script:
-  - composer up 
-  - make test
+  - make ci
 
