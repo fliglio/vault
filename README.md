@@ -16,6 +16,8 @@ Supports:
 
 ### Configure Environment
 
+The default client will leverage the environment variables `VAULT_ADDR` and `VAULT_TOKEN`
+
 	export VAULT_ADDR=http://localhost:8200
 	export VAULT_TOKEN=horde
 
