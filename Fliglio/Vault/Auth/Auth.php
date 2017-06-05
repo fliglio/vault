@@ -1,8 +1,8 @@
 <?php
 namespace Fliglio\Vault\Auth;
 
-use Fliglio\Vault\Client;
+use Fliglio\Vault\VaultClient;
 
 interface Auth {
-	public function getToken(Client $c);
+	public function getToken(VaultClient $c);
 }

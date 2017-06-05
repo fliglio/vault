@@ -1,7 +1,7 @@
 <?php
 namespace Fliglio\Vault\Auth;
 
-use Fliglio\Vault\Client;
+use Fliglio\Vault\VaultClient;
 
 class Tokens implements Auth {
 
@@ -11,7 +11,7 @@ class Tokens implements Auth {
 		$this->token = $token;
 	}
 
-	public function getToken(Client $c) {
+	public function getToken(VaultClient $c) {
 		return $this->token;
 	}
 }

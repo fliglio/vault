@@ -23,16 +23,16 @@ class VaultTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testDefaultConfig() {
-		$cfg = (new DefaultConfigFactory())->getConfig();
+		$cfg = (new DefaultVaultConfigFactory())->getConfig();
 
 		$this->assertEquals($cfg->getAddr(), "http://localhost:8200");
 		$this->assertEquals(get_class($cfg->getHttp()), "GuzzleHttp\Client");
 		$this->assertEquals(get_class($cfg->getAuth()), "Fliglio\Vault\Auth\Tokens");
-		$this->assertEquals($cfg->getAuth()->getToken(new Client()), "horde");
+		$this->assertEquals($cfg->getAuth()->getToken(new VaultClient()), "horde");
 	}
 
 	public function testAppRoleAuth() {
-		$c = new Client();
+		$c = new VaultClient();
 		$resp = $c->authDisable('approle');
 		$resp = $c->authEnable('approle');
 		$resp = $c->authDisable('approle');
@@ -42,7 +42,7 @@ class VaultTest extends \PHPUnit_Framework_TestCase {
 	 * @expectedException \Exception
 	 */
 	public function testAppRoleAuthExists() {
-		$c = new Client();
+		$c = new VaultClient();
 		$resp = $c->authEnable('approle');
 		$resp = $c->authEnable('approle');
 	}
@@ -55,7 +55,7 @@ class VaultTest extends \PHPUnit_Framework_TestCase {
 		];
 		
 		// when
-		$c = new Client();
+		$c = new VaultClient();
 
 		$resp = $c->write('secret/testing', $secrets);
 		$found = $c->read('secret/testing');

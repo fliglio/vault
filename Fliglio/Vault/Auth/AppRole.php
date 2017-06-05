@@ -1,7 +1,7 @@
 <?php
 namespace Fliglio\Vault\Auth;
 
-use Fliglio\Vault\Client;
+use Fliglio\Vault\VaultClient;
 
 class AppRole implements Auth {
 
@@ -15,7 +15,7 @@ class AppRole implements Auth {
 		$this->secretId = $secretId;
 	}
 
-	public function getToken(Client $c) {
+	public function getToken(VaultClient $c) {
 		if (is_null($this->token)) {
 			$this->token = ''; // update from null to empty string to prevent recursion
 			$this->login($c);
@@ -23,7 +23,7 @@ class AppRole implements Auth {
 		return $this->token;
 	}
 
-	private function login(Client $c) {
+	private function login(VaultClient $c) {
 		$data = $c->write("auth/approle/login", [
 			"role_id" => $this->roleId,
 			"secret_id" => $this->secretId,
