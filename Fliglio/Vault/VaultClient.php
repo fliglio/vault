@@ -8,6 +8,7 @@ class VaultClient {
 	private $addr;
 	private $http;
 	private $auth;
+	private $addrHostName;
 
 	public function __construct(VaultConfigFactory $f = null) {
 		if (is_null($f)) {
@@ -19,6 +20,7 @@ class VaultClient {
 		$this->addr = $cfg->getAddr();
 		$this->http = $cfg->getHttp();
 		$this->auth = $cfg->getAuth();
+		$this->addrHostName = $cfg->getAddrHostName();
 	}
 
 	public function authEnable($type) {
@@ -41,6 +43,9 @@ class VaultClient {
 			],
 			'json' => $body,
 		];
+		if (!is_null($this->addrHostName)) {
+			$opts['headers']['Host'] = $this->addrHostName;
+		}
 		$request = $this->http->createRequest($method, $this->addr . '/v1/' . $path, $opts);
 		$data;
 		try {

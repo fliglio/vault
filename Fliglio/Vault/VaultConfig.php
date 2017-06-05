@@ -8,11 +8,13 @@ class VaultConfig {
 	private $addr;
 	private $http;
 	private $auth;
+	private $addrHostName;
 
-	public function __construct($addr, $http, Auth $auth=null) {
+	public function __construct($addr, $http, Auth $auth=null, $addrHostName=null) {
 		$this->addr = $addr;
 		$this->http = $http;
 		$this->auth = $auth;
+		$this->addrHostName = $addrHostName;
 	}
 	public function getAddr() {
 		return $this->addr;
@@ -22,5 +24,8 @@ class VaultConfig {
 	}
 	public function getAuth() {
 		return $this->auth;
+	}
+	public function getAddrHostName() {
+		return $this->addrHostName;
 	}
 }
