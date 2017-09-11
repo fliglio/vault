@@ -46,11 +46,18 @@ class VaultClient {
 		if (!is_null($this->addrHostName)) {
 			$opts['headers']['Host'] = $this->addrHostName;
 		}
-		$request = $this->http->createRequest($method, $this->addr . '/v1/' . $path, $opts);
-		$data;
+		$data = null;
 		try {
+			$response = null;
+			if (method_exists($this->http, 'request')) {
+				// Guzzle 6.x
+				$response = $this->http->request($method, $this->addr . '/v1/' . $path, $opts);
+			} else {
+				// Guzzle 5.x
+				$request = $this->http->createRequest($method, $this->addr . '/v1/' . $path, $opts);
+				$response = $this->http->send($request);
+			}
 
-			$response = $this->http->send($request);
 			$data = json_decode($response->getBody(), true);
 
 		} catch (RequestException $e) {
