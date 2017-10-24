@@ -29,7 +29,7 @@ The default client will leverage the environment variables `VAULT_ADDR` and `VAU
 		"baz" => "boo",
 	];
 
-	$c = new Client();
+	$c = new VaultClient();
 
 	$resp = $c->write('secret/testing', $secrets);
 	$found = $c->read('secret/testing');
@@ -52,7 +52,7 @@ The default client will leverage the environment variables `VAULT_ADDR` and `VAU
 		"baz" => "boo",
 	];
 
-	$c = new Client(new DefaultConfigFactory([
+	$c = new VaultClient(new DefaultVaultConfigFactory([
 		'auth' => new AppRole($roleId, $secretId),
 	]));
 
