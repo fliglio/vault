@@ -12,6 +12,7 @@ env:
     - PATH=/home/travis/bin:$PATH VAULT_TOKEN=horde VAULT_ADDR=http://localhost:8200
 
 before_script:
+  - wget -q -O - https://www.mongodb.org/static/pgp/server-3.2.pub | sudo apt-key add -
   - wget http://dl.fligl.io/vault.gz
   - gunzip vault.gz
   - chmod +x vault
