@@ -2,8 +2,8 @@
 
 namespace Fliglio\Vault;
 
-
-use Fliglio\Vault\Auth\AppRole;
+use Fliglio\Vault\VaultClient;
+use Fliglio\Vault\DefaultVaultConfigFactory;
 
 class VaultTest extends \PHPUnit_Framework_TestCase {
 	
@@ -57,7 +57,7 @@ class VaultTest extends \PHPUnit_Framework_TestCase {
 		// when
 		$c = new VaultClient();
 
-		$resp = $c->write('secret/testing', $secrets);
+		$c->write('secret/testing', $secrets);
 		$found = $c->read('secret/testing');
 		// then
 		$this->assertEquals($secrets, $found['data'], "read secrets should match written secrets");
